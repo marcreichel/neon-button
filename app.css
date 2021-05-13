@@ -1,0 +1,125 @@
+:root {
+    --color-text: #ffeeff;
+    --color-neon: #ff00ff;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Nunito', sans-serif;
+    background: #262424;
+    font-weight: 600;
+    background: -moz-linear-gradient(top, #262424 0%, #110e0e 47%, #000000 100%);
+    background: -webkit-linear-gradient(top, #262424 0%,#110e0e 47%,#000000 100%);
+    background: linear-gradient(to bottom, #262424 0%,#110e0e 47%,#000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#262424', endColorstr='#000000',GradientType=0 );
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.neon-button {
+    font-size: 5rem;
+
+    border: .1em solid var(--color-text);
+    color: var(--color-text);
+    display: inline-block;
+    cursor: pointer;
+    border-radius: .25em;
+    text-decoration: none;
+    box-shadow: 0 0 .75em 0 var(--color-neon),
+        inset 0 0 .75em 0 var(--color-neon),
+        0 0 .1em .05em var(--color-text),
+        inset 0 0 .1em .05em var(--color-text);
+    text-shadow: 0 0 .5em var(--color-neon), 0 0 .1em var(--color-text);
+    background: transparent;
+    padding: .2em 1em;
+    position: relative;
+}
+
+.neon-button::before {
+    content: "";
+    display: block;
+    position: absolute;
+    transition: opacity 50ms linear;
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-neon);
+    transform: perspective(1em) rotateX(45deg) scale(1, .35);
+    filter: blur(1em);
+    opacity: .5;
+    pointer-events: none;
+}
+
+.neon-button::after {
+    content: "";
+    position: absolute;
+    transition: opacity 50ms linear;
+    top: -.1em;
+    right: -.1em;
+    bottom: -.1em;
+    left: -.1em;
+    border-radius: .25em;
+    border: .1em solid var(--color-text);
+    box-shadow: 0 0 2em .5em var(--color-neon), inset 0 0 1em 0 var(--color-neon);
+    opacity: 0;
+}
+
+@keyframes blink {
+    0% {
+        color: inherit;
+    }
+    10% {
+        color: inherit;
+    }
+    11% {
+        color: black;
+    }
+    15% {
+        color: black;
+    }
+    16% {
+        color: inherit;
+    }
+    55% {
+        color: inherit;
+    }
+    56% {
+        color: black;
+    }
+    58% {
+        color: black;
+    }
+    59% {
+        color: inherit;
+    }
+    90% {
+        color: inherit;
+    }
+    91% {
+        color: black;
+    }
+    99% {
+        color: black;
+    }
+    100% {
+        color: inherit;
+    }
+}
+
+.neon-button span, .neon-button span {
+    animation: blink 2s linear infinite;
+}
+
+.neon-button:hover::before, .neon-button:focus::before,
+.neon-button:hover::after, .neon-button:focus::after {
+    opacity: 1;
+}
