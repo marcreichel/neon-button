@@ -25,7 +25,7 @@ html, body {
 }
 
 .neon-button {
-    font-size: 5rem;
+    font-size: 4rem;
 
     border: .1em solid var(--color-text);
     color: var(--color-text);
@@ -37,7 +37,8 @@ html, body {
         inset 0 0 .75em 0 var(--color-neon),
         0 0 .1em .05em var(--color-text),
         inset 0 0 .1em .05em var(--color-text);
-    text-shadow: 0 0 .5em var(--color-neon), 0 0 .1em var(--color-text);
+    text-shadow: 0 0 .5em var(--color-neon),
+        0 0 .1em var(--color-text);
     background: transparent;
     padding: .2em 1em;
     position: relative;
@@ -69,7 +70,8 @@ html, body {
     left: -.1em;
     border-radius: .25em;
     border: .1em solid var(--color-text);
-    box-shadow: 0 0 2em .5em var(--color-neon), inset 0 0 1em 0 var(--color-neon);
+    box-shadow: 0 0 2em .5em var(--color-neon),
+        inset 0 0 1em 0 var(--color-neon);
     opacity: 0;
 }
 
@@ -117,6 +119,10 @@ html, body {
 
 .neon-button span, .neon-button span {
     animation: blink 2s linear infinite;
+}
+
+.neon-button:focus {
+    outline: none;
 }
 
 .neon-button:hover::before, .neon-button:focus::before,
